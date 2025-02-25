@@ -67,5 +67,4 @@ function update_subject($subject) {
         exit;
     }
 }
-    
 ?>

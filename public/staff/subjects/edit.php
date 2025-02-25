@@ -16,8 +16,14 @@ if(isPostRequest()) {
     $subject['position'] = $_POST['position'] ?? '';
     $subject['visible'] = $_POST['visible'] ?? '';
 
-    $result = (update_subject($subject));
-    redirect_to(url_for('subjects/show.php?id=' . h($id)));
+    $result = update_subject($subject);
+    if($result === true){
+        redirect_to(url_for('subjects/show.php?id=' . h($id)));
+    } else {
+        $errors = $result;
+        var_dump($errors);
+    }
+    
 
 } else {
     $subject = find_subject_by_id($id);

@@ -46,5 +46,26 @@ function find_all_pages() {
     confirm_result_set($result);
     return $result;
 }
+function update_subject($subject) {
+    global $db;
+
+    $sql = "UPDATE Subjects SET ";
+    $sql .= "menu_name='" . $subject['menu_name'] . "', ";
+    $sql .= "position='" . $subject['position'] . "', ";
+    $sql .= "visible='" . $subject['visible'] . "' ";
+    $sql .= "WHERE id='" . $subject['id'] . "' ";
+    $sql .= "LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+    //for UPDATE statements, $result is true/false
+    if($result) {
+        return true;
+    } else {
+        //UPDATE failed
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+}
     
 ?>

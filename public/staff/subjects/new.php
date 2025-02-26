@@ -11,7 +11,7 @@ if(isPostRequest()) {
     $result = insert_subject($subject);
     if($result === true) {
         $new_id = mysqli_insert_id($db);
-        redirect_to(url_for('subjects/show.php?id=' . $new_id)); 
+        redirect_to(url_for('staff/subjects/show.php?id=' . $new_id)); 
     } else {
         $errors = $result;
     }
@@ -33,13 +33,13 @@ $subject["position"] = $subject_count
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">
-    <a class="back-link" href="<?php echo url_for('subjects/index.php'); ?>"> &laquo; Back to List</a>
+    <a class="back-link" href="<?php echo url_for('staff/subjects/index.php'); ?>"> &laquo; Back to List</a>
 
     <div class="subject new">
         <h1>Create Subject</h1>
 
         <?php echo display_errors($errors); ?>
-        <form action="<?php echo url_for('subjects/new.php'); ?>" method="POST">
+        <form action="<?php echo url_for('staff/subjects/new.php'); ?>" method="POST">
             <dl>
                 <dt>Menu Name</dt>
                 <dd><input type="text" name="menu_name" value="" /></dd>

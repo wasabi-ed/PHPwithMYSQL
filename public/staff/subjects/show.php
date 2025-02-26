@@ -10,7 +10,7 @@ $subject = find_subject_by_id($id);
 
 <div id="content">
     
-    <a href="<?php echo url_for('subjects/index.php'); ?>"><?php echo h("<< Back to List")?></a>
+    <a href="<?php echo url_for('staff/subjects/index.php'); ?>"><?php echo h("<< Back to List")?></a>
     <div class="subject show">
         <h1>Subject: <?php echo h($subject['menu_name']); ?></h1>
         <div class="attributes">

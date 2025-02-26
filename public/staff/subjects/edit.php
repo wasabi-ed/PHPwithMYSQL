@@ -3,7 +3,7 @@
 require_once('../../../private/initialize.php'); 
  
 if(!isset($_GET['id'])) {
-    redirect_to(url_for('subjects/index.php'));
+    redirect_to(url_for('staff/subjects/index.php'));
 }
 
 $id = $_GET['id'];
@@ -18,7 +18,7 @@ if(isPostRequest()) {
 
     $result = update_subject($subject);
     if($result === true){
-        redirect_to(url_for('subjects/show.php?id=' . h($id)));
+        redirect_to(url_for('staff/subjects/show.php?id=' . h($id)));
     } else {
         $errors = $result;
         //var_dump($errors);
@@ -38,12 +38,12 @@ mysqli_free_result($subject_set);
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">
-    <a class="back-link" href="<?php echo url_for('/subjects/index.php'); ?>"> &laquo; Back to List</a>
+    <a class="back-link" href="<?php echo url_for('staff/subjects/index.php'); ?>"> &laquo; Back to List</a>
 
     <div class="subject edit">
         <h1>Edit Subject</h1>
         <?php echo display_errors($errors); ?>
-        <form action="<?php echo url_for('/subjects/edit.php?id=' . h(u($id))); ?>" method="POST">
+        <form action="<?php echo url_for('staff/subjects/edit.php?id=' . h(u($id))); ?>" method="POST">
             <dl>
                 <dt>Menu Name</dt>
                 <dd><input type="text" name="menu_name" value="<?php echo h($subject['menu_name']); ?>" /></dd>

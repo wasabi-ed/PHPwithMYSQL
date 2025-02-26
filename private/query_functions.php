@@ -11,7 +11,7 @@ function find_all_subjects() {
 function find_subject_by_id($id){
     global $db;
     $sql = "SELECT * FROM Subjects ";
-    $sql .= "WHERE id = '" . $id . "'";
+    $sql .= "WHERE id = '" . db_escape($db,$id) . "'";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     $subject = mysqli_fetch_assoc($result);
@@ -59,9 +59,9 @@ function insert_subject($subject) {
     $sql = "INSERT INTO subjects ";
     $sql .= "(menu_name, position, visible) ";
     $sql .= "VALUES (";
-    $sql .= "'" . $subject['menu_name'] ."',";
-    $sql .= "'" . $subject['position'] ."',";
-    $sql .= "'" . $subject['visible'] ."'";
+    $sql .= "'" . db_escape($db,$subject['menu_name']) ."',";
+    $sql .= "'" . db_escape($db,$subject['position']) ."',";
+    $sql .= "'" . db_escape($db,$subject['visible']) ."'";
     $sql .= ")";
     $result = mysqli_query($db, $sql);
     if($result){
@@ -81,10 +81,10 @@ function update_subject($subject) {
     }
 
     $sql = "UPDATE Subjects SET ";
-    $sql .= "menu_name='" . $subject['menu_name'] . "', ";
-    $sql .= "position='" . $subject['position'] . "', ";
-    $sql .= "visible='" . $subject['visible'] . "' ";
-    $sql .= "WHERE id='" . $subject['id'] . "' ";
+    $sql .= "menu_name='" . db_escape($db,$subject['menu_name']) . "', ";
+    $sql .= "position='" . db_escape($db,$subject['position']) . "', ";
+    $sql .= "visible='" . db_escape($db,$subject['visible']) . "' ";
+    $sql .= "WHERE id='" . db_escape($db,$subject['id']) . "' ";
     $sql .= "LIMIT 1";
 
     $result = mysqli_query($db, $sql);
@@ -102,7 +102,7 @@ function delete_subject($id) {
     global $db;
 
     $sql = "DELETE FROM Subjects ";
-    $sql .= "WHERE id='" . $id . "' ";
+    $sql .= "WHERE id='" . db_escape($db,$id) . "' ";
     $sql .= "LIMIT 1";
 
     $result = mysqli_query($db, $sql);

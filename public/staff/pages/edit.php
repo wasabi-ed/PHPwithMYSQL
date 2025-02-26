@@ -21,7 +21,7 @@ if(isPostRequest()) {
     $page['content'] = $_POST['content'] ?? '';
 
     $result = update_page($page);
-    redirect_to(url_for('pages/show.php?id=' . $id));
+    redirect_to(url_for('staff/pages/show.php?id=' . $id));
 
 } else {
 
@@ -38,12 +38,12 @@ if(isPostRequest()) {
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">
-    <a class="back-link" href="<?php echo url_for('pages/index.php'); ?>"> &laquo; Back to List</a>
+    <a class="back-link" href="<?php echo url_for('staff/pages/index.php'); ?>"> &laquo; Back to List</a>
 
     <div class="page edit">
         <h1>Edit Page</h1>
 
-        <form action="<?php echo url_for('pages/edit.php?id=' . h(u($id))); ?>" method="POST">
+        <form action="<?php echo url_for('staff/pages/edit.php?id=' . h(u($id))); ?>" method="POST">
             <dl>
                 <dt>Subject</dt>
                 <dd>

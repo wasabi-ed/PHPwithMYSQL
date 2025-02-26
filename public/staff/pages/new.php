@@ -13,7 +13,7 @@ if(isPostRequest()) {
 
   $result = insert_page($page);
   $new_id = mysqli_insert_id($db);
-  redirect_to(url_for('pages/show.php?id=' . $new_id));
+  redirect_to(url_for('staff/pages/show.php?id=' . $new_id));
 
 } else {
 
@@ -37,12 +37,12 @@ if(isPostRequest()) {
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('pages/index.php'); ?>">&laquo; Back to List</a>
+  <a class="back-link" href="<?php echo url_for('staff/pages/index.php'); ?>">&laquo; Back to List</a>
 
   <div class="page new">
     <h1>Create Page</h1>
 
-    <form action="<?php echo url_for('pages/new.php'); ?>" method="post">
+    <form action="<?php echo url_for('staff/pages/new.php'); ?>" method="post">
       <dl>
         <dt>Subject</dt>
         <dd>

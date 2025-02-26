@@ -13,7 +13,7 @@ $page = find_page_by_id($id);
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('pages/index.php'); ?>">&laquo; Back to List</a>
+  <a class="back-link" href="<?php echo url_for('staff/pages/index.php'); ?>">&laquo; Back to List</a>
 
   <div class="page show">
 
